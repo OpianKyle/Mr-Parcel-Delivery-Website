@@ -30,6 +30,8 @@ import businessHandoffImage from '@assets/generated_images/mr-parcel-business-ha
 import packingCareImage from '@assets/generated_images/mr-parcel-packing-care.jpg';
 import localBusinessImage from '@assets/generated_images/mr-parcel-local-business.jpg';
 import coastalRouteImage from '@assets/generated_images/mr-parcel-coastal-route.jpg';
+import bookingDetailsImage from '@assets/generated_images/mr-parcel-booking-details.jpg';
+import contactCourierImage from '@assets/generated_images/mr-parcel-contact-courier.jpg';
 import heroHandoffVideo from '@assets/mr-parcel-hero-1080p.mp4';
 import { Link, Route, Router as WouterRouter, Switch, useLocation } from 'wouter';
 
@@ -484,10 +486,10 @@ function Book() {
   return (
     <PageFrame>
       <PageIntro eyebrow="Book a delivery" title="Tell us where it is going." body="Fill in the basics below and we will open a WhatsApp chat with your delivery details ready to send. No account. No waiting for an email reply." />
-      <section className="section-pad bg-[#fffaf1]">
+      <section className="quote-section section-pad bg-[#fffaf1]">
         <div className="container-wide grid items-start gap-10 lg:grid-cols-[1.05fr_.95fr]">
           <form className="booking-form paper-panel soft-shadow rounded-2xl p-6 sm:p-9" onSubmit={submit} data-testid="form-book-delivery">
-            <div className="mb-8"><p className="font-display text-2xl font-extrabold tracking-[-.05em] text-[#08263d]">Your delivery details</p><p className="mt-2 text-sm text-[#527080]">The more we know, the quicker we can quote.</p></div>
+            <div className="mb-8 max-w-xl"><span className="eyebrow">Quote request</span><p className="mt-5 font-display text-2xl font-extrabold tracking-[-.05em] text-[#08263d]">Your delivery details</p><p className="mt-2 text-sm leading-6 text-[#527080]">The more we know, the quicker we can quote. Required fields are marked with an asterisk.</p></div>
             <div className="grid gap-5 sm:grid-cols-2">
               <label><span className="field-label">Your name *</span><input className="field-control" required value={form.name} onChange={update('name')} placeholder="e.g. Alex" data-testid="input-book-name" /></label>
               <label><span className="field-label">Pickup town *</span><input className="field-control" required value={form.pickup} onChange={update('pickup')} placeholder="e.g. Velddrif" data-testid="input-book-pickup" /></label>
@@ -501,7 +503,11 @@ function Book() {
             {sent && <p className="mt-4 flex items-center gap-2 text-sm font-bold text-[#0d634f]" data-testid="status-book-sent"><Check size={17} /> WhatsApp is opening with your details.</p>}
             <p className="mt-5 text-xs leading-5 text-[#779095]">By sending, you are opening a WhatsApp conversation with Mr Parcel on 064 07 00 868.</p>
           </form>
-          <aside className="lg:sticky lg:top-28">
+          <aside className="quote-aside lg:sticky lg:top-28">
+            <figure className="quote-image image-frame overflow-hidden rounded-[1.5rem]">
+              <img src={bookingDetailsImage} alt="A carefully packed parcel beside a notebook and measuring tape with a coastal view" className="h-full min-h-[19rem] w-full object-cover object-[center_58%]" loading="lazy" />
+              <figcaption className="image-caption"><span className="h-2 w-2 rounded-full bg-[#f7a061]" /> A few details make the journey smoother.</figcaption>
+            </figure>
             <div className="booking-note dark-panel rounded-2xl p-7 sm:p-9"><span className="eyebrow">Before you send</span><h2 className="font-display mt-5 text-3xl font-extrabold tracking-[-.05em]">A good quote starts with good details.</h2><ul className="mt-7 space-y-5">{['Maximum 25kg per parcel', 'Maximum size 48cm × 40cm × 39cm', 'Pack and seal your parcel securely', 'We provide weighbill and tracking language'].map((item) => <li className="flex gap-3 text-sm leading-6 text-[#c5d8dc]" key={item}><Check size={18} className="mt-1 shrink-0 text-[#f7a061]" />{item}</li>)}</ul><div className="mt-8 border-t border-[#2e5b70] pt-6"><p className="text-xs font-extrabold uppercase tracking-[.13em] text-[#f7a061]">Need a quick answer?</p><a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-2 font-bold text-[#fffaf1] hover:text-[#f7a061]" data-testid="link-book-quick-whatsapp"><WhatsAppIcon size={18} /> Chat directly</a></div></div>
             <div className="mt-5 rounded-2xl bg-[#dcece8] p-6"><div className="flex gap-3"><CircleAlert size={20} className="shrink-0 text-[#f36f21]" /><p className="text-sm leading-6 text-[#386b67]">Do not send dangerous goods, flammable liquids, perishables or valuables. See the full parcel rules on <Link href="/services" className="font-bold underline" data-testid="link-book-services">Services</Link>.</p></div></div>
           </aside>
@@ -515,14 +521,20 @@ function Contact() {
   return (
     <PageFrame>
       <PageIntro eyebrow="Contact Mr Parcel" title="A real person is one WhatsApp away." body="We keep contact simple. Tell us what you need moved, where it is going and when — we will get back to you with the next step." />
-      <section className="section-pad bg-[#fffaf1]">
+      <section className="contact-section section-pad bg-[#fffaf1]">
         <div className="container-narrow">
-          <div className="contact-hero orange-panel hard-shadow rounded-2xl p-7 sm:p-12">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fffaf1] text-[#19ad70]"><WhatsAppIcon size={28} /></div>
-            <p className="eyebrow mt-10 !text-[#ffe1cf]">WhatsApp only</p>
-            <h2 className="font-display mt-4 text-4xl font-extrabold tracking-[-.06em] sm:text-5xl">Let’s get your parcel moving.</h2>
-            <p className="mt-5 max-w-lg text-base leading-7 text-[#ffe1cf]">For quotes, route checks, pickup details and quick questions, send us a WhatsApp. It is the quickest way to reach the person behind the van.</p>
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-secondary mt-8" data-testid="link-contact-whatsapp"><WhatsAppIcon size={19} /> WhatsApp 064 07 00 868</a>
+          <div className="contact-hero orange-panel hard-shadow grid overflow-hidden rounded-2xl lg:grid-cols-[.9fr_1.1fr]">
+            <div className="contact-hero-copy p-7 sm:p-12">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fffaf1] text-[#19ad70]"><WhatsAppIcon size={28} /></div>
+              <p className="eyebrow mt-10 !text-[#ffe1cf]">WhatsApp only</p>
+              <h2 className="font-display mt-4 text-4xl font-extrabold tracking-[-.06em] sm:text-5xl">Let’s get your parcel moving.</h2>
+              <p className="mt-5 max-w-lg text-base leading-7 text-[#ffe1cf]">For quotes, route checks, pickup details and quick questions, send us a WhatsApp. It is the quickest way to reach the person behind the van.</p>
+              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-secondary mt-8" data-testid="link-contact-whatsapp"><WhatsAppIcon size={19} /> WhatsApp 064 07 00 868</a>
+            </div>
+            <figure className="contact-photo image-frame min-h-[20rem] overflow-hidden lg:min-h-full">
+              <img src={contactCourierImage} alt="Mr Parcel courier holding a parcel beside his delivery van on a coastal route" className="h-full w-full object-cover object-[center_42%]" loading="lazy" />
+              <figcaption className="image-caption"><span className="h-2 w-2 rounded-full bg-[#f7a061]" /> A real person on the other end.</figcaption>
+            </figure>
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <div className="paper-panel rounded-2xl p-6" data-testid="card-contact-number"><Phone size={21} className="text-[#f36f21]" /><p className="mt-5 text-xs font-extrabold uppercase tracking-[.13em] text-[#779095]">Phone / WhatsApp</p><p className="mt-2 font-display text-xl font-extrabold text-[#08263d]">064 07 00 868</p></div>

@@ -355,7 +355,7 @@ header .container-wide::after {
 .contact-hero .btn-secondary { box-shadow: 4px 4px 0 rgba(8, 38, 61, .12); }
 .booking-form { position: relative; border-top: 4px solid #f36f21; }
 .booking-form::before {
-  content: 'QUOTE REQUEST'; position: absolute; top: 1.35rem; right: 1.5rem;
+  content: none; position: absolute; top: 1.35rem; right: 1.5rem;
   color: #9aacae; font-size: .62rem; font-weight: 800; letter-spacing: .16em;
 }
 .booking-note {
@@ -396,6 +396,79 @@ footer .brand-mark { transition: color .2s ease, transform .2s ease; }
     transform: none; filter: none;
   }
   body::before { display: none; }
+}
+
+.quote-section,
+.contact-section {
+  background-image: radial-gradient(circle at 8% 12%, rgba(185, 228, 223, .22), transparent 14rem);
+}
+
+.booking-form {
+  min-height: 100%;
+}
+
+.booking-form .eyebrow {
+  color: #f36f21;
+}
+
+.booking-form .field-label {
+  letter-spacing: .01em;
+}
+
+.quote-aside {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.quote-image {
+  min-height: 19rem;
+  box-shadow: 10px 10px 0 rgba(8, 38, 61, .1);
+}
+
+.quote-image:hover img,
+.contact-photo:hover img {
+  transform: scale(1.035);
+  filter: saturate(1.04);
+}
+
+.contact-hero {
+  box-shadow: 10px 11px 0 rgba(8, 38, 61, .14);
+}
+
+.contact-hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-photo {
+  min-height: 20rem;
+  box-shadow: none;
+}
+
+.contact-photo::after {
+  background: linear-gradient(90deg, rgba(243, 111, 33, .2), transparent 38%, rgba(8, 38, 61, .08));
+}
+
+.contact-photo img,
+.quote-image img {
+  transition: transform .55s cubic-bezier(.22, .8, .3, 1), filter .35s ease;
+}
+
+@media (max-width: 1023px) {
+  .contact-photo {
+    min-height: 18rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .quote-image,
+  .contact-photo {
+    min-height: 15rem;
+  }
+
+  .quote-aside {
+    gap: 1rem;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
