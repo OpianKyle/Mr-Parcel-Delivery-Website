@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ChangeEvent, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   ArrowDownRight,
@@ -34,13 +34,12 @@ import businessHandoffImage from '@assets/generated_images/mr-parcel-business-ha
 import packingCareImage from '@assets/generated_images/mr-parcel-packing-care.jpg';
 import localBusinessImage from '@assets/generated_images/mr-parcel-local-business.jpg';
 import coastalRouteImage from '@assets/generated_images/mr-parcel-coastal-route.jpg';
-import bookingDetailsImage from '@assets/generated_images/mr-parcel-booking-details.jpg';
 import contactCourierImage from '@assets/generated_images/mr-parcel-contact-courier.jpg';
 import heroHandoffVideo from '@assets/mr-parcel-hero-1080p.mp4';
 import { Link, Route, Router as WouterRouter, Switch, useLocation } from 'wouter';
 
 const queryClient = new QueryClient();
-const WHATSAPP_URL = 'https://wa.me/27640700868';
+const WHATSAPP_URL = 'https://wa.me/27788309300';
 
 function WhatsAppIcon({ size = 20 }: { size?: number }) {
   return <MessageCircle size={size} strokeWidth={2.4} aria-hidden="true" />;
@@ -97,9 +96,9 @@ function Header() {
               {item.label}
             </Link>
           ))}
-          <Link href="/book" className="btn-primary min-h-10 px-4" data-testid="link-nav-book">
-            Get a quote <ArrowRight size={16} />
-          </Link>
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-primary min-h-10 px-4" data-testid="link-nav-whatsapp">
+            <WhatsAppIcon size={16} /> WhatsApp us
+          </a>
         </nav>
         <button type="button" className="grid h-10 w-10 place-items-center rounded-lg text-[#fffaf1] md:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? 'Close menu' : 'Open menu'} data-testid="button-mobile-menu">
           {open ? <X size={23} /> : <Menu size={23} />}
@@ -113,7 +112,7 @@ function Header() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/book" className="btn-primary mt-2" data-testid="link-mobile-book">Get a quote <ArrowRight size={16} /></Link>
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-primary mt-2" data-testid="link-mobile-whatsapp"><WhatsAppIcon size={17} /> WhatsApp us</a>
           </div>
         </nav>
       )}
@@ -129,7 +128,7 @@ function Footer() {
           <BrandMark inverse />
           <p className="mt-5 max-w-xs text-sm leading-6 text-[#b8ccd7]">Fast, reliable mini parcel delivery between West Coast towns and Cape Town.</p>
           <a className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#f7a061] hover:text-[#fffaf1]" href={WHATSAPP_URL} target="_blank" rel="noreferrer" data-testid="link-footer-whatsapp">
-            <WhatsAppIcon size={17} /> 064 07 00 868
+            <WhatsAppIcon size={17} /> 078 830 9300
           </a>
         </div>
         <div>
@@ -137,7 +136,7 @@ function Footer() {
           <div className="mt-4 flex flex-col gap-3 text-sm text-[#b8ccd7]">
             <Link href="/services" className="hover:text-[#fffaf1]" data-testid="link-footer-services">Services & parcel rules</Link>
             <Link href="/routes" className="hover:text-[#fffaf1]" data-testid="link-footer-routes">Routes & service area</Link>
-            <Link href="/book" className="hover:text-[#fffaf1]" data-testid="link-footer-book">Book a delivery</Link>
+            <Link href="/quote" className="hover:text-[#fffaf1]" data-testid="link-footer-quote">Open quote calculator</Link>
           </div>
         </div>
         <div>
@@ -255,7 +254,7 @@ function Home() {
             <p className="reveal reveal-2 mt-6 max-w-xl font-display text-2xl font-extrabold leading-tight tracking-[-.04em] text-[#fffaf1] sm:text-3xl">The friendly way to move a small parcel.</p>
             <p className="reveal reveal-2 mt-3 max-w-lg text-base leading-7 text-[#e1eeed] sm:text-lg">Same-day delivery between the West Coast and Cape Town, with a real person on the other end of the message.</p>
             <div className="reveal reveal-3 mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/book" className="btn-primary" data-testid="link-home-book">Get a delivery quote <ArrowRight size={17} /></Link>
+              <Link href="/login" className="btn-primary" data-testid="link-home-portal">Client portal <ArrowRight size={17} /></Link>
               <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-secondary" data-testid="link-home-whatsapp"><WhatsAppIcon size={18} /> WhatsApp us</a>
             </div>
             <div className="reveal reveal-4 mt-8 flex items-center gap-3 text-xs font-bold text-[#d8e8e8]"><Check size={16} className="text-[#f7a061]" /> Local routes. Clear updates. Careful handovers.</div>
@@ -294,7 +293,7 @@ function Home() {
           </figure>
           <div>
             <SectionHeading eyebrow="How it works" title="Three messages from pickup to handover." body="We keep the logistics behind the scenes and the next step in front of you." />
-            <Link href="/book" className="btn-primary mt-8" data-testid="link-home-how-book">Start a booking <ArrowRight size={17} /></Link>
+              <Link href="/quote" className="btn-primary mt-8" data-testid="link-home-quote">Open quote calculator <ArrowRight size={17} /></Link>
             <div className="relative mt-10 space-y-4">
               {[
                 ['01', 'Tell us what is moving', 'Send your pickup, drop-off and parcel details on WhatsApp.'],
@@ -342,7 +341,7 @@ function Home() {
       <section className="orange-panel">
         <div className="container-wide flex flex-col gap-6 py-12 sm:flex-row sm:items-center sm:justify-between sm:py-14">
           <div><p className="font-display text-3xl font-extrabold tracking-[-.05em] sm:text-4xl">Got a parcel to move?</p><p className="mt-2 text-sm font-medium text-[#ffe1cf]">A quick WhatsApp is all it takes to get a quote.</p></div>
-          <Link href="/book" className="btn-secondary w-fit" data-testid="link-home-bottom-book">Get a quote <ArrowRight size={17} /></Link>
+          <Link href="/quote" className="btn-secondary w-fit" data-testid="link-home-bottom-quote">Open quote calculator <ArrowRight size={17} /></Link>
         </div>
       </section>
     </PageFrame>
@@ -419,7 +418,7 @@ function Services() {
           </div>
         </div>
       </section>
-      <section className="orange-panel"><div className="container-wide flex flex-col gap-5 py-12 sm:flex-row sm:items-center sm:justify-between"><p className="font-display text-3xl font-extrabold tracking-[-.05em]">Ready to move a parcel?</p><Link href="/book" className="btn-secondary w-fit" data-testid="link-services-book">Check my delivery <ArrowRight size={17} /></Link></div></section>
+      <section className="orange-panel"><div className="container-wide flex flex-col gap-5 py-12 sm:flex-row sm:items-center sm:justify-between"><p className="font-display text-3xl font-extrabold tracking-[-.05em]">Ready to move a parcel?</p><Link href="/quote" className="btn-secondary w-fit" data-testid="link-services-quote">Open quote calculator <ArrowRight size={17} /></Link></div></section>
     </PageFrame>
   );
 }
@@ -469,55 +468,11 @@ function Routes() {
         <div className="container-wide">
           <SectionHeading eyebrow="Town by town" title="Places on the route." body="These are the towns we plan around every day. Tap a place when you are ready to tell us what needs moving." />
           <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {towns.map(([town, body], index) => <Link href="/book" className="route-town-card group flex items-start justify-between gap-4 rounded-2xl border border-[#bfd5d2] bg-[#fffaf1] p-5 transition-transform hover:-translate-y-1" key={town} data-testid={`link-route-town-${town.toLowerCase()}`}><span><span className="block text-xs font-extrabold uppercase tracking-[.12em] text-[#f36f21]">0{index + 1}</span><span className="mt-3 block font-display text-xl font-extrabold tracking-[-.04em] text-[#08263d]">{town}</span><span className="mt-1 block text-sm leading-5 text-[#527080]">{body}</span></span><ArrowDownRight size={20} className="shrink-0 text-[#f36f21] transition-transform group-hover:translate-x-1 group-hover:translate-y-1" /></Link>)}
+            {towns.map(([town, body], index) => <Link href="/quote" className="route-town-card group flex items-start justify-between gap-4 rounded-2xl border border-[#bfd5d2] bg-[#fffaf1] p-5 transition-transform hover:-translate-y-1" key={town} data-testid={`link-route-town-${town.toLowerCase()}`}><span><span className="block text-xs font-extrabold uppercase tracking-[.12em] text-[#f36f21]">0{index + 1}</span><span className="mt-3 block font-display text-xl font-extrabold tracking-[-.04em] text-[#08263d]">{town}</span><span className="mt-1 block text-sm leading-5 text-[#527080]">{body}</span></span><ArrowDownRight size={20} className="shrink-0 text-[#f36f21] transition-transform group-hover:translate-x-1 group-hover:translate-y-1" /></Link>)}
           </div>
         </div>
       </section>
       <section className="dark-panel"><div className="container-wide flex flex-col gap-5 py-12 sm:flex-row sm:items-center sm:justify-between"><div><p className="font-display text-3xl font-extrabold tracking-[-.05em]">Not sure if we reach you?</p><p className="mt-2 text-sm text-[#b8ccd7]">Send your pickup and drop-off. We will check the route.</p></div><a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-primary w-fit" data-testid="link-routes-whatsapp"><WhatsAppIcon size={18} /> Ask on WhatsApp</a></div></section>
-    </PageFrame>
-  );
-}
-
-function Book() {
-  const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: '', pickup: '', dropoff: '', parcel: '', weight: '', timing: '', notes: '' });
-  const update = (key: keyof typeof form) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => setForm((current) => ({ ...current, [key]: event.target.value }));
-  const message = useMemo(() => `Hi Mr Parcel, I would like a delivery quote.\n\nName: ${form.name}\nPickup: ${form.pickup}\nDrop-off: ${form.dropoff}\nParcel: ${form.parcel}\nWeight: ${form.weight || 'Not sure'}\nTiming: ${form.timing || 'Flexible'}\nNotes: ${form.notes || 'None'}\n\nSent from MrParcel.co.za`, [form]);
-  const submit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSent(true);
-    window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
-  };
-  return (
-    <PageFrame>
-      <PageIntro eyebrow="Book a delivery" title="Tell us where it is going." body="Fill in the basics below and we will open a WhatsApp chat with your delivery details ready to send. No account. No waiting for an email reply." />
-      <section className="quote-section section-pad bg-[#fffaf1]">
-        <div className="container-wide grid items-start gap-10 lg:grid-cols-[1.05fr_.95fr]">
-          <form className="booking-form paper-panel soft-shadow rounded-2xl p-6 sm:p-9" onSubmit={submit} data-testid="form-book-delivery">
-            <div className="mb-8 max-w-xl"><span className="eyebrow">Quote request</span><p className="mt-5 font-display text-2xl font-extrabold tracking-[-.05em] text-[#08263d]">Your delivery details</p><p className="mt-2 text-sm leading-6 text-[#527080]">The more we know, the quicker we can quote. Required fields are marked with an asterisk.</p></div>
-            <div className="grid gap-5 sm:grid-cols-2">
-              <label><span className="field-label">Your name *</span><input className="field-control" required value={form.name} onChange={update('name')} placeholder="e.g. Alex" data-testid="input-book-name" /></label>
-              <label><span className="field-label">Pickup town *</span><input className="field-control" required value={form.pickup} onChange={update('pickup')} placeholder="e.g. Velddrif" data-testid="input-book-pickup" /></label>
-              <label><span className="field-label">Drop-off town *</span><input className="field-control" required value={form.dropoff} onChange={update('dropoff')} placeholder="e.g. Cape Town" data-testid="input-book-dropoff" /></label>
-              <label><span className="field-label">Parcel description *</span><input className="field-control" required value={form.parcel} onChange={update('parcel')} placeholder="e.g. Small clothing box" data-testid="input-book-parcel" /></label>
-              <label><span className="field-label">Approx. weight</span><input className="field-control" value={form.weight} onChange={update('weight')} placeholder="e.g. 4kg" data-testid="input-book-weight" /></label>
-              <label><span className="field-label">When do you need it?</span><select className="field-control" value={form.timing} onChange={update('timing')} data-testid="select-book-timing"><option value="">Choose one</option><option>Today</option><option>Tomorrow</option><option>This week</option><option>Flexible</option></select></label>
-            </div>
-            <label className="mt-5 block"><span className="field-label">Anything else we should know?</span><textarea className="field-control min-h-28 resize-y" value={form.notes} onChange={update('notes')} placeholder="Fragile, access instructions, preferred handover..." data-testid="textarea-book-notes" /></label>
-            <button className="btn-primary mt-6 w-full sm:w-auto" type="submit" data-testid="button-submit-book"><WhatsAppIcon size={18} /> Send details on WhatsApp <ArrowRight size={17} /></button>
-            {sent && <p className="mt-4 flex items-center gap-2 text-sm font-bold text-[#0d634f]" data-testid="status-book-sent"><Check size={17} /> WhatsApp is opening with your details.</p>}
-            <p className="mt-5 text-xs leading-5 text-[#779095]">By sending, you are opening a WhatsApp conversation with Mr Parcel on 064 07 00 868.</p>
-          </form>
-          <aside className="quote-aside lg:sticky lg:top-28">
-            <figure className="quote-image image-frame overflow-hidden rounded-[1.5rem]">
-              <img src={bookingDetailsImage} alt="A carefully packed parcel beside a notebook and measuring tape with a coastal view" className="h-full min-h-[19rem] w-full object-cover object-[center_58%]" loading="lazy" />
-              <figcaption className="image-caption"><span className="h-2 w-2 rounded-full bg-[#f7a061]" /> A few details make the journey smoother.</figcaption>
-            </figure>
-            <div className="booking-note dark-panel rounded-2xl p-7 sm:p-9"><span className="eyebrow">Before you send</span><h2 className="font-display mt-5 text-3xl font-extrabold tracking-[-.05em]">A good quote starts with good details.</h2><ul className="mt-7 space-y-5">{['Maximum 25kg per parcel', 'Maximum size 48cm × 40cm × 39cm', 'Pack and seal your parcel securely', 'We provide weighbill and tracking language'].map((item) => <li className="flex gap-3 text-sm leading-6 text-[#c5d8dc]" key={item}><Check size={18} className="mt-1 shrink-0 text-[#f7a061]" />{item}</li>)}</ul><div className="mt-8 border-t border-[#2e5b70] pt-6"><p className="text-xs font-extrabold uppercase tracking-[.13em] text-[#f7a061]">Need a quick answer?</p><a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-2 font-bold text-[#fffaf1] hover:text-[#f7a061]" data-testid="link-book-quick-whatsapp"><WhatsAppIcon size={18} /> Chat directly</a></div></div>
-            <div className="mt-5 rounded-2xl bg-[#dcece8] p-6"><div className="flex gap-3"><CircleAlert size={20} className="shrink-0 text-[#f36f21]" /><p className="text-sm leading-6 text-[#386b67]">Do not send dangerous goods, flammable liquids, perishables or valuables. See the full parcel rules on <Link href="/services" className="font-bold underline" data-testid="link-book-services">Services</Link>.</p></div></div>
-          </aside>
-        </div>
-      </section>
     </PageFrame>
   );
 }
@@ -534,7 +489,7 @@ function Contact() {
               <p className="eyebrow mt-10 !text-[#ffe1cf]">WhatsApp only</p>
               <h2 className="font-display mt-4 text-4xl font-extrabold tracking-[-.06em] sm:text-5xl">Let’s get your parcel moving.</h2>
               <p className="mt-5 max-w-lg text-base leading-7 text-[#ffe1cf]">For quotes, route checks, pickup details and quick questions, send us a WhatsApp. It is the quickest way to reach the person behind the van.</p>
-              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-secondary mt-8" data-testid="link-contact-whatsapp"><WhatsAppIcon size={19} /> WhatsApp 064 07 00 868</a>
+              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-secondary mt-8" data-testid="link-contact-whatsapp"><WhatsAppIcon size={19} /> WhatsApp 078 830 9300</a>
             </div>
             <figure className="contact-photo image-frame min-h-[20rem] overflow-hidden lg:min-h-full">
               <img src={contactCourierImage} alt="Mr Parcel courier holding a parcel beside his delivery van on a coastal route" className="h-full w-full object-cover object-[center_42%]" loading="lazy" />
@@ -542,13 +497,13 @@ function Contact() {
             </figure>
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            <div className="paper-panel rounded-2xl p-6" data-testid="card-contact-number"><Phone size={21} className="text-[#f36f21]" /><p className="mt-5 text-xs font-extrabold uppercase tracking-[.13em] text-[#779095]">Phone / WhatsApp</p><p className="mt-2 font-display text-xl font-extrabold text-[#08263d]">064 07 00 868</p></div>
+            <div className="paper-panel rounded-2xl p-6" data-testid="card-contact-number"><Phone size={21} className="text-[#f36f21]" /><p className="mt-5 text-xs font-extrabold uppercase tracking-[.13em] text-[#779095]">Phone / WhatsApp</p><p className="mt-2 font-display text-xl font-extrabold text-[#08263d]">078 830 9300</p></div>
             <div className="paper-panel rounded-2xl p-6" data-testid="card-contact-website"><MapPin size={21} className="text-[#f36f21]" /><p className="mt-5 text-xs font-extrabold uppercase tracking-[.13em] text-[#779095]">Website</p><p className="mt-2 font-display text-xl font-extrabold text-[#08263d]">MrParcel.co.za</p></div>
           </div>
           <div className="mt-12 border-t border-[#d7e0dc] pt-10"><SectionHeading eyebrow="Good to know" title="Keep it local. Keep it moving." body="Mr Parcel serves the West Coast and Cape Town, with a practical 150km service radius. For a quick answer about your town or parcel, WhatsApp us the details." /><Link href="/routes" className="btn-ghost mt-7" data-testid="link-contact-routes">Check our routes <ArrowRight size={17} /></Link></div>
         </div>
       </section>
-      <section className="dark-panel"><div className="container-wide flex flex-col gap-5 py-12 sm:flex-row sm:items-center sm:justify-between"><div><p className="font-display text-3xl font-extrabold tracking-[-.05em]">Prefer to send the details now?</p><p className="mt-2 text-sm text-[#b8ccd7]">Use the short quote form and jump straight into WhatsApp.</p></div><Link href="/book" className="btn-primary w-fit" data-testid="link-contact-book">Get a quote <ArrowRight size={17} /></Link></div></section>
+      <section className="dark-panel"><div className="container-wide flex flex-col gap-5 py-12 sm:flex-row sm:items-center sm:justify-between"><div><p className="font-display text-3xl font-extrabold tracking-[-.05em]">Prefer to build the quote now?</p><p className="mt-2 text-sm text-[#b8ccd7]">Use the standalone quote calculator and send it on.</p></div><Link href="/quote" className="btn-primary w-fit" data-testid="link-contact-quote">Open quote calculator <ArrowRight size={17} /></Link></div></section>
     </PageFrame>
   );
 }
@@ -577,13 +532,13 @@ function Router() {
       <Switch>
         <Route path="/login" component={AuthPage} />
         <Route path="/register" component={AuthPage} />
+        <Route path="/quote" component={QuotePage} />
         <Route path="/calculator" component={CalculatorPortal} />
         <Route path="/admin/rates" component={AdminRatesPortal} />
         <Route path="/admin/users" component={AdminUsersPortal} />
         <Route path="/" component={Home} />
         <Route path="/services" component={Services} />
         <Route path="/routes" component={Routes} />
-        <Route path="/book" component={Book} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
       </Switch>
@@ -598,6 +553,14 @@ function CalculatorPortal() {
         <CalculatorPage />
       </PortalLayout>
     </ProtectedRoute>
+  );
+}
+
+function QuotePage() {
+  return (
+    <PageFrame>
+      <CalculatorPage standalone />
+    </PageFrame>
   );
 }
 
@@ -621,10 +584,16 @@ function AdminUsersPortal() {
   );
 }
 
-function App() {
+function SiteMetadata() {
+  const [location] = useLocation();
   useEffect(() => {
-    document.title = 'Mr Parcel | Same-Day Parcel Delivery West Coast & Cape Town';
-    const description = 'Fast, reliable same-day parcel delivery between Velddrif, Vredenburg, Saldanha, Hopefield, Malmesbury & Cape Town. WhatsApp 064 07 00 868.';
+    const isQuotePage = location === '/quote';
+    document.title = isQuotePage
+      ? 'Mr Parcel | Create a Shareable Delivery Quote'
+      : 'Mr Parcel | Same-Day Parcel Delivery West Coast & Cape Town';
+    const description = isQuotePage
+      ? 'Create a clear Mr Parcel delivery quote without an account, then print or save it as a PDF to share.'
+      : 'Fast, reliable same-day parcel delivery between Velddrif, Vredenburg, Saldanha, Hopefield, Malmesbury & Cape Town. WhatsApp 078 830 9300.';
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement('meta');
@@ -632,12 +601,17 @@ function App() {
       document.head.appendChild(meta);
     }
     meta.setAttribute('content', description);
-  }, []);
+  }, [location]);
+  return null;
+}
+
+function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <AuthProvider>
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+            <SiteMetadata />
             <Router />
           </WouterRouter>
         </AuthProvider>

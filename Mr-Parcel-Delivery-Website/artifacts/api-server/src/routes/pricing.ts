@@ -18,7 +18,7 @@ function toService(row: Record<string, unknown>): PricingService {
   };
 }
 
-router.get("/pricing", requireAuth, async (_req, res, next) => {
+router.get("/pricing", async (_req, res, next) => {
   try {
     const [settingsRows] = await getDatabasePool().execute(
       "SELECT vat_rate FROM pricing_settings WHERE id = 1 LIMIT 1",
