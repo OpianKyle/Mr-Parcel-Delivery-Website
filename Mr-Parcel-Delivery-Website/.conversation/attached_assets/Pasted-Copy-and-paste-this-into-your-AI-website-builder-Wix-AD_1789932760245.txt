@@ -1,0 +1,48 @@
+Copy and paste this into your AI website builder (Wix ADI, Durable, 10Web, Hostinger AI, etc.). Attach the brochure image as the visual reference.
+
+---
+
+Prompt:
+
+Create a responsive, mobile-first 5-page website for Mr Parcel, a mini parcel delivery service. Use the attached brochure as the exact branding guide for colors, logo, typography, tone, and imagery.
+
+Brand identity:
+
+· Name: Mr PARCEL
+· Tagline: Mini Parcel Delivery Services — Fast, Reliable & Same-Day Delivery!
+· Secondary taglines: Serving the West Coast & Cape Town, Local & Efficient, Fast. Secure. Local.
+· Logo: winged blue delivery van with orange accents, “Mr” in blue and “PARCEL” in orange.
+· Colors: deep blue, bright orange, white, light grey.
+· Typography: bold modern sans-serif for headings, clean sans-serif for body.
+· Style: friendly, local, professional, illustrated/cartoon style like the brochure. Use images of a smiling driver handing a parcel to a customer, a blue delivery van, Table Mountain/West Coast scenery, cardboard boxes, and a stylized route map.
+· Tone: simple, trustworthy, fast, local, WhatsApp-first.
+
+Pages:
+
+1. Home — Hero with headline “MR PARCEL” / “Mini Parcel Delivery Services” / “Fast, Reliable & Same-Day Delivery!” Subhead: “Serving the West Coast & Cape Town.” Primary CTA: “Book on WhatsApp” linking to https://wa.me/27640700868. Secondary CTA: “View Routes.”
+2. Services — Same-Day Express, E-commerce Parcels, Documents, Small Parcels, B2B Deliveries. Mention max parcel size: 25kg, 48cm x 40cm x 39cm. Mention packaging rules, allowed/forbidden items, and weighbill/tracking.
+3. Routes & Areas — Stylized map showing: Velddrif, Vredenburg, Saldanha, Hopefield, Malmesbury, Cape Town. Text: “Same-Day Delivery Between These Towns!” List each town and the 150km radius.
+4. Get a Quote / Book — Form that sends details via WhatsApp: name, phone, pickup address, dropoff address, parcel type, weight, dimensions, date/time, notes. Button: “Send via WhatsApp.”
+5. Contact — WhatsApp Only: 064 07 00 868. Website: MrParcel.co.za. Service area: West Coast & Cape Town. Business hours placeholder.
+
+Home page sections:
+
+· Sticky header with logo, nav, and WhatsApp button.
+· Hero image matching brochure style.
+· Trust badges: Fast, Secure, Local, Same-Day.
+· Route map section with the towns listed above.
+· Services cards.
+· “Why choose Mr Parcel?” — local, efficient, WhatsApp booking, same-day delivery.
+· Big CTA: “Book Your Delivery Now!” with WhatsApp number and website.
+· Footer: logo, “Fast. Secure. Local.”, WhatsApp, service areas, domain.
+
+Features:
+
+· Floating WhatsApp chat button on every page.
+· Click-to-WhatsApp: https://wa.me/27640700868.
+· Mobile-first, fast-loading, SEO-friendly.
+· SEO title: “Mr Parcel | Same-Day Parcel Delivery West Coast & Cape Town”
+· Meta description: “Fast, reliable same-day parcel delivery between Velddrif, Vredenburg, Saldanha, Hopefield, Malmesbury & Cape Town. WhatsApp 064 07 00 868.”
+· Keywords: same-day courier West Coast, parcel delivery Cape Town, Vredenburg courier, Saldanha delivery, Malmesbury parcel, Mr Parcel.
+
+Important: Match the brochure’s blue/orange/white palette exactly. Do not use generic corporate stock photos. Keep the illustrated, friendly, local feel. Make WhatsApp the main conversion action.
