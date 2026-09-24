@@ -1,33 +1,23 @@
-modules = ["nodejs-24"]
+modules = ["nodejs-20", "web", "bash"]
+
+[deployment]
+router = "application"
+deploymentTarget = "autoscale"
+
+[deployment.postBuild]
+args = ["pnpm", "store", "prune"]
+env = { "CI" = "true" }
 
 [workflows]
-runButton = "Project"
+runButton = "Mr-Parcel-Delivery-Website/artifacts/mr-parcel: web"
 
-[[workflows.workflow]]
-name = "Project"
-mode = "parallel"
-author = "agent"
+[agent]
+stack = "PNPM_WORKSPACE"
+expertMode = true
 
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "API server"
+[postMerge]
+path = "scripts/post-merge.sh"
+timeoutMs = 20000
 
-[[workflows.workflow]]
-name = "API server"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "cd Mr-Parcel-Delivery-Website && PORT=8080 pnpm --filter @workspace/api-server run dev"
-waitForPort = 8080
-
-[workflows.workflow.metadata]
-outputType = "console"
-
-[[ports]]
-localPort = 8080
-externalPort = 80
-
-[[ports]]
-localPort = 21229
-externalPort = 3000
+[nix]
+channel = "stable-25_05"
