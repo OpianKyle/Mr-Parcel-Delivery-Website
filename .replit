@@ -9,7 +9,7 @@ args = ["pnpm", "store", "prune"]
 env = { "CI" = "true" }
 
 [workflows]
-runButton = "Mr-Parcel-Delivery-Website/artifacts/mr-parcel: web"
+runButton = "Start application"
 
 [agent]
 stack = "PNPM_WORKSPACE"
