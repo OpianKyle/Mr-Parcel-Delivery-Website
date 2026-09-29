@@ -35,3 +35,11 @@ externalPort = 8080
 [[ports]]
 localPort = 21229
 externalPort = 3001
+
+[userenv]
+
+[userenv.shared]
+SMTP_HOST = "smtp.masakhegroup.co.za"
+SMTP_PORT = "465"
+SMTP_SECURE = "true"
+SMTP_FROM = "admin@masakhegroup.co.za"
