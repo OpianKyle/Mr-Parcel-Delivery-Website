@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Mr Parcel"
+description = "A mobile-first, WhatsApp-first parcel delivery website for Mr Parcel, serving the West Coast and Cape Town with same-day local delivery."
+version = "1.0.0"
+id = "artifacts/mr-parcel"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21229
+
+[services.development]
+run = "pnpm --filter @workspace/mr-parcel run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/mr-parcel", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/mr-parcel/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21229"
+BASE_PATH = "/"

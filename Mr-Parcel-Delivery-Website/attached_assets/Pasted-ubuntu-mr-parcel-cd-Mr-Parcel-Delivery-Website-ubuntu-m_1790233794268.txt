@@ -1,0 +1,43 @@
+ubuntu@mr-parcel:~$ cd Mr-Parcel-Delivery-Website
+ubuntu@mr-parcel:~/Mr-Parcel-Delivery-Website$ cd /var/www/mr-parcel
+-bash: cd: /var/www/mr-parcel: No such file or directory
+ubuntu@mr-parcel:~/Mr-Parcel-Delivery-Website$ sudo chown -R $USER:$USER /var/www/mr-parcel
+cd /var/www/mr-parcel
+pnpm install --frozen-lockfile
+chown: cannot access '/var/www/mr-parcel': No such file or directory
+-bash: cd: /var/www/mr-parcel: No such file or directory
+Scope: all 9 workspace projects
+Update available! 12.5.1 → 12.6.0.
+Changelog: https://pnpm.io/v/12.6.0
+To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -
+✓ Lockfile passes supply-chain policies (verified 2d ago)
+Error: ERR_PNPM_IGNORED_BUILDS
+
+  × installing dependencies
+  ╰─▶ Ignored build scripts: esbuild@0.28.2
+  help: Run "pnpm approve-builds" to pick which dependencies should be allowed
+        to run scripts.
+
+ubuntu@mr-parcel:~/Mr-Parcel-Delivery-Website$ pnpm --filter @workspace/api-server run build
+
+$ node ./build.mjs
+
+  dist/index.mjs                       1.4mb ⚠️
+  dist/pino-worker.mjs               153.5kb
+  dist/pino-file.mjs                 142.1kb
+  dist/pino-pretty.mjs               115.3kb
+  dist/thread-stream-worker.mjs        7.4kb
+  dist/index.mjs.map                   2.1mb
+  dist/pino-worker.mjs.map           256.9kb
+  dist/pino-file.mjs.map             229.1kb
+  dist/pino-pretty.mjs.map           209.5kb
+  dist/thread-stream-worker.mjs.map   12.0kb
+
+⚡ Done in 370ms
+ubuntu@mr-parcel:~/Mr-Parcel-Delivery-Website$ sudo mkdir -p /etc/mr-parcel
+sudo nano /etc/mr-parcel/api.env
+ubuntu@mr-parcel:~/Mr-Parcel-Delivery-Website$ sudo chmod 600 /etc/mr-parcel/api.env
+ubuntu@mr-parcel:~/Mr-Parcel-Delivery-Website$ sudo nano /etc/systemd/system/mr-parcel-api.service
+ubuntu@mr-parcel:~/Mr-Parcel-Delivery-Website$ sudo chown -R www-data:www-data /var/www/mr-parcel
+chown: cannot access '/var/www/mr-parcel': No such file or directory
+ubuntu@mr-parcel:~/Mr-Parcel-Delivery-Website$
