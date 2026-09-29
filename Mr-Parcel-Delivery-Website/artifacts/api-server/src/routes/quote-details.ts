@@ -41,6 +41,9 @@ function createTransporter() {
     host,
     port,
     secure: String(process.env.SMTP_SECURE || "").toLowerCase() === "true",
+    tls: {
+      rejectUnauthorized: String(process.env.SMTP_TLS_REJECT_UNAUTHORIZED || "true").toLowerCase() !== "false",
+    },
     auth: { user, pass: password },
   });
 }
