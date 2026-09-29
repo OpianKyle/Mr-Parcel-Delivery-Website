@@ -27,6 +27,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { AuthPage, AuthProvider, PortalLayout, ProtectedRoute } from '@/pages/auth';
 import CalculatorPage from '@/pages/calculator';
+import DetailsPage from '@/pages/details';
 import AdminRatesPage from '@/pages/admin-rates';
 import AdminUsersPage from '@/pages/admin-users';
 import heroHandoffImage from '@assets/generated_images/mr-parcel-customer-handoff-hero.jpg';
@@ -84,6 +85,7 @@ function Header() {
     { href: '/services', label: 'Services' },
     { href: '/routes', label: 'Routes' },
     { href: '/contact', label: 'Contact' },
+    { href: '/details', label: 'Send details' },
     { href: '/login', label: 'Client portal' },
   ];
   return (
@@ -533,6 +535,7 @@ function Router() {
         <Route path="/login" component={AuthPage} />
         <Route path="/register" component={AuthPage} />
         <Route path="/quote" component={QuotePage} />
+        <Route path="/details" component={DetailsPage} />
         <Route path="/calculator" component={CalculatorPortal} />
         <Route path="/admin/rates" component={AdminRatesPortal} />
         <Route path="/admin/users" component={AdminUsersPortal} />
@@ -588,11 +591,16 @@ function SiteMetadata() {
   const [location] = useLocation();
   useEffect(() => {
     const isQuotePage = location === '/quote';
+    const isDetailsPage = location === '/details';
     document.title = isQuotePage
       ? 'Mr Parcel | Create a Shareable Delivery Quote'
+      : isDetailsPage
+        ? 'Mr Parcel | Send Delivery Details'
       : 'Mr Parcel | Same-Day Parcel Delivery West Coast & Cape Town';
     const description = isQuotePage
       ? 'Create a clear Mr Parcel delivery quote without an account, then print or save it as a PDF to share.'
+      : isDetailsPage
+        ? 'Send your collection, delivery and parcel details to Mr Parcel for a personal quote.'
       : 'Fast, reliable same-day parcel delivery between Velddrif, Vredenburg, Saldanha, Hopefield, Malmesbury & Cape Town. WhatsApp 078 830 9300.';
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {

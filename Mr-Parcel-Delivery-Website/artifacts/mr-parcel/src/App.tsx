@@ -27,6 +27,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { AuthPage, AuthProvider, PortalLayout, ProtectedRoute } from '@/pages/auth';
 import CalculatorPage from '@/pages/calculator';
+import DetailsPage from '@/pages/details';
 import AdminRatesPage from '@/pages/admin-rates';
 import AdminUsersPage from '@/pages/admin-users';
 import heroHandoffImage from '@assets/generated_images/mr-parcel-customer-handoff-hero.jpg';
@@ -85,6 +86,7 @@ function Header() {
     { href: '/services', label: 'Services' },
     { href: '/routes', label: 'Routes' },
     { href: '/contact', label: 'Contact' },
+    { href: '/details', label: 'Send details' },
     { href: '/login', label: 'Client portal' },
   ];
   return (
@@ -584,6 +586,7 @@ function Router() {
         <Route path="/services" component={Services} />
         <Route path="/routes" component={Routes} />
         <Route path="/book" component={Book} />
+        <Route path="/details" component={DetailsPage} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
       </Switch>
